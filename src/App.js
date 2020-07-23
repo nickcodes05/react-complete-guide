@@ -7,7 +7,8 @@ const App = props => {
 	  persons: [
 	  { name: 'Max', age: 28 },
 	  { name: 'Nicholas', age: 27}
-	  ]
+	  ],
+	  showPersons: false
   });
   
   //const [otherState, setOtherState] = useState('some other value:')
@@ -28,6 +29,10 @@ const App = props => {
 		  ]})
   }
   
+  const togglePersonsHandler = () => {
+
+  }
+  
   const style = {
 	  backgroundColor: 'white',
 	  font: 'Inherit',
@@ -39,10 +44,12 @@ const App = props => {
       <div className="App">
 	  	<h1> New React App </h1>
 		<p> This is working! </p>
-		<button style={style} onClick={() => switchNameHandler('Adrian')}>Switch Name</button>
+		<button style={style} onClick={() => togglePersonsHandler}>Switch Name</button>
+		{ personsState.showPersons ?
+		<div>
 		<Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
-		//use bind instead of anon function
 		<Person name={personsState.persons[1].name} age={personsState.persons[1].age} click={switchNameHandler.bind(this, 'Andrew')} changed={nameChangedHandler}>My Hobbies: Codeing</Person>
+		</div> : null}
       </div>
     );
 	
